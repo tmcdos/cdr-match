@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<Title>CDR import</title>
+<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+<link rel="stylesheet" type="text/css" href="normal.css">
+<SCRIPT LANGUAGE="JavaScript" type="text/javascript" SRC="AnchorPosition.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" type="text/javascript" SRC="date.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" type="text/javascript" SRC="calendar.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" type="text/javascript" SRC="dragiframe.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">bringSelectedIframeToTop(true);</SCRIPT>
+</head>
+<body topmargin="3" leftmargin="3" rightmargin="3" bottommargin="3" onLoad="javascript: window.focus();">
+<IFRAME NAME="opiten" ID="opiten" STYLE="width:150px;height:150px;position:absolute;top:200;left:200;border:0px;display:none" SRC="calendar.php" frameborder="0"></IFRAME>
+<form name="admin" action="telefon.php" method="POST" ENCTYPE="multipart/form-data">
+	<table>
+	  <tr>
+			<td><table>
+			  <tr>
+          <td><table id="sub" align="center" class="log" style="font-size:10pt">
+        		<tr><th colspan="4" align="center">Import CDR from GOLD TELECOM</th></tr>
+        		<tr>
+        			<td rowspan="7">&nbsp;</td>
+        			<td align="right">CSV file</td>
+        			<td><input type="file" class="edit" name="csv_gold" size="25"></td>
+        			<td rowspan="7">&nbsp;</td>
+        		</tr>
+        		<tr>
+        			<Td align="center" colspan="2"><input type="submit" name="up_gold" class="button3" value="UPLOAD"></td>
+        		</tr>
+          </table></td>
+			    <td>&nbsp;</td>
+          <td rowspan="2"><table id="sub" align="center" class="log" style="font-size:10pt">
+        		<tr><th colspan="4" align="center">&nbsp;Report for cost of phone calls&nbsp;</th></tr>
+        		<tr>
+        			<td rowspan="7">&nbsp;</td>
+        			<td align="right">Department:</td>
+        			<td><select name="depart_id" class="combo">
+        			  <option value="0">{DEPART_ID}</option>
+        			</select></td>
+        			<td rowspan="7">&nbsp;</td>
+        		</tr>
+        		<tr>
+		         	<td align="right">From:</td>
+							<td>
+							  <input type="text" name="beg_dat" class="edit" size="10" maxlength="10">
+							  &nbsp;
+    						<A onClick="cal1.select(document.admin.beg_dat,'an1','dd.MM.yyyy'); return false;" NAME="an1" ID="an1">
+		  		  			<IMG SRC="calendar.gif" BORDER="0" ALIGN="middle" width="16" height="16">
+			    			</A>
+							</td>
+						</tr>
+						<tr>
+		         	<td align="right">To:</td>
+							<td>
+							  <input type="text" name="end_dat" class="edit" size="10" maxlength="10">
+							  &nbsp;
+    						<A onClick="cal1.select(document.admin.end_dat,'an2','dd.MM.yyyy'); return false;" NAME="an2" ID="an2">
+		  		  			<IMG SRC="calendar.gif" BORDER="0" ALIGN="middle" width="16" height="16">
+			    			</A>
+							</td>
+						</tr>
+						<tr>
+						  <td>&nbsp;</td>
+        			<td><input type="button" name="cmdInfo" class="button3" value="SHOW" onClick="javascript:window.open('cdr.php?beg='+this.form.beg_dat.value+'&end='+this.form.end_dat.value+'&dep='+this.form.depart_id.value);"></td>
+        		</tr>
+          </table></td>
+        </tr>
+			  <tr>
+          <td><table id="sub" align="center" class="log" style="font-size:10pt">
+        		<tr><th colspan="4" align="center">Import CDR from MTEL</th></tr>
+        		<tr>
+        			<td rowspan="7">&nbsp;</td>
+        			<td align="right">CSV file</td>
+        			<td><input type="file" class="edit" name="csv_mtel" size="25"></td>
+        			<td rowspan="7">&nbsp;</td>
+        		</tr>
+        		<tr>
+        			<Td align="center" colspan="2"><input type="submit" name="up_mtel" class="button3" value="UPLOAD"></td>
+        		</tr>
+          </table></td>
+			  </tr>
+    		<tr valign="top">
+    			<td><table class="list_1" cellpadding="3">
+    				<tr>
+    					<th>Public inbound number (DID)</th>
+    					<th>Internal number</th>
+    					<th>Employee</th>
+    				</tr>
+    				<tr><td>{INCOME}</td></tr>
+    			</table></td>
+    			<td>&nbsp;</td>
+    			<td><table class="list_1" cellpadding="3">
+    				<tr>
+    					<th>CLIP for outgoing calls</th>
+    					<th>Internal number</th>
+    				</tr>
+    				<tr><td>{OUTCOME}</td></tr>
+    			</table></td>
+    			<td>&nbsp;</td>
+    		</tr>
+    	</table></td>
+    </tr>
+	</table>
+<script language="Javascript" type="text/javascript">
+  <!--{ERROR}-->
+		var cal1 = new CalendarPopup('opiten','calendar.php?calo=cal1');
+		cal1.setWeekStartDay(1);
+</script>
+</form>
+</body>
+</html>
